@@ -19,12 +19,12 @@ type Config struct {
 func LoadConfig() (*Config, error) {
 	data, err := os.ReadFile(constants.ConfigFile)
 	if err != nil {
-		return nil, fmt.Errorf("impossible de lire le fichier de configuration: %w", err)
+		return nil, fmt.Errorf("unable to read configuration file: %w", err)
 	}
 
 	var config Config
 	if err := json.Unmarshal(data, &config); err != nil {
-		return nil, fmt.Errorf("impossible de parser le fichier de configuration: %w", err)
+		return nil, fmt.Errorf("unable to parse configuration file: %w", err)
 	}
 
 	return &config, nil

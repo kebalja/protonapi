@@ -10,11 +10,11 @@ const (
 	DebugEnabled = false
 
 	// Messages utilisateur
-	CaptchaPromptMessage   = "Veuillez résoudre le CAPTCHA à l'adresse : %s\n"
-	CaptchaTokenPrompt     = "Entrez le token CAPTCHA : "
-	CaptchaRequiredMessage = "Vérification CAPTCHA requise"
-	TOTPAutoMessage        = "Génération automatique du code TOTP..."
-	TOTPPrompt             = "Entrez le code TOTP : "
+	CaptchaPromptMessage   = "Please solve CAPTCHA at the following address : %s\n"
+	CaptchaTokenPrompt     = "Enter CAPTCHA : "
+	CaptchaRequiredMessage = "CAPTCHA verification required"
+	TOTPAutoMessage        = "Automatic code generation TOTP..."
+	TOTPPrompt             = "Enter TOTP : "
 
 	// Méthode de vérification
 	VerificationMethodCaptcha = "captcha"

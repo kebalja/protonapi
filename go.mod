@@ -1,6 +1,8 @@
 module github.com/realalphabet/protonmail-client
 
-go 1.24.3
+go 1.24
+
+toolchain go1.24.0
 
 require (
 	github.com/ProtonMail/gluon v0.17.1-0.20230724134000-308be39be96e
