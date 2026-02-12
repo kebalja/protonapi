@@ -47,18 +47,21 @@ func LoginOTP() {
 	// 5) Chargement de la configuration
 	config, err := conf.LoadConfig()
 	if err != nil {
+		fmt.Println("loading config worked")
 		fatal(err)
 	}
 
 	// 6) Connexion au client
 	client, auth, err := handleLogin(ctx, manager, config.Username, []byte(config.Password))
 	if err != nil {
+		fmt.Println("error during handlelogin")
 		fatal(fmt.Errorf("échec de la connexion: %w", err))
 	}
 	defer client.Close()
 
 	// 6) Gestion de l'authentification 2FA si nécessaire
 	if auth.TwoFA.Enabled&proton.HasTOTP != 0 {
+		fmt.Println("otp enabled account")
 		var totpCode string
 
 		if config.TOTPSecretKey != "" {
@@ -94,12 +97,13 @@ func LoginOTP() {
 	// 7) Récupération des adresses et clés
 	protonAddrs, err := util.GetProtonAddresses(ctx, client, config.Password)
 	if err != nil {
+		fmt.Println("here")
 		fatal(err)
 	}
 
 	// 8) Récupération des derniers messages
 	emails, err := client.GetMessageMetadataPage(ctx, 0, 50, proton.MessageFilter{
-		LabelID: "yJn2IcBk1SEibL8Z9fca_BUE6CzFCC8SDqBkyp3sf-CgWl4hniCg6bCF4R-bzv9OGiSEm29SeAkq83opDeocvQ==",
+		LabelID: "2HJvNIOJx1awp3DQxMHp1DZ4Fmj1sJ31onIkMg5XYcsq0dA6yTA1n0DNyPuUkhrSSVhIxnUGTgy4F8cyzFxgsw==",
 	})
 	if err != nil {
 		fatal(err)
@@ -142,6 +146,7 @@ func handleLogin(ctx context.Context, manager *proton.Manager, username string, 
 	client, auth, err := manager.NewClientWithLogin(ctx, username, password)
 
 	if err != nil {
+		fmt.Println("error during login")
 		// Vérifie si l'erreur est liée au CAPTCHA
 		var apiErr *proton.APIError
 
