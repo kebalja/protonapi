@@ -24,7 +24,7 @@ func GetProtonAddresses(ctx context.Context, client *proton.Client, password str
 		return nil, fmt.Errorf("unable to retrieve the user: %w", err)
 	}
 
-	addr, err := client.GetAddress(ctx, "APY4a3Qqciwzo7xyTIeTETj1hknFWyjh4PtVqITUeH8AiOWp_D_QFj0ew9sUXh2LdUXbop4DM9kC7gDlu5o1Pg==")
+	addr, err := client.GetAddress(ctx, "")
 	addrs := []proton.Address{addr}
 	if err != nil {
 		fmt.Println("Error while retrieving address")
